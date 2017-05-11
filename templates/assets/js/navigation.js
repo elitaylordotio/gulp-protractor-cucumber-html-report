@@ -24,9 +24,10 @@ app.navigation  = (function () {
           this.querySelector('.error-details').style.display = 'block';
         }
     },
-    /** Hiding and displaying steps after clicking on scenario header*/
+    /** Hiding and displaying steps & images after clicking on scenario header*/
     toggleStep: function () {
-      var steps = this.querySelectorAll('.step');
+      var steps = this.querySelectorAll('.step:not(.image)');
+      var images = this.querySelectorAll('.step.image');
       for (var k = 0; k < steps.length; k++) {
         if (steps[k].style.display === 'block') {
           steps[k].style.display = 'none';
@@ -34,6 +35,14 @@ app.navigation  = (function () {
           steps[k].style.display = 'block';
         }
       }
+      for (var k = 0; k < images.length; k++) {
+        if (images[k].style.display === 'inline-block') {
+          images[k].style.display = 'none';
+        } else {
+          images[k].style.display = 'inline-block';
+        }
+      }
+
     },
 
     bindEvents: function (errors, scenarios, filteringButtons, displayChartButton) {
